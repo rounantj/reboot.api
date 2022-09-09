@@ -1,0 +1,36 @@
+import { PrismaClient, {{MODULE_NAME}} } from '@prisma/client'
+import { {{MODEL_NAME}}SavePayload, {{MODEL_NAME}}UpdatePayload } from './{{MODULE_NAME}}-interfaces'
+
+export default class {{MODEL_NAME}}Repository {
+  constructor(private readonly client: PrismaClient) {}
+
+  public all(): Promise<Array<{{MODULE_NAME}}>> {
+    return this.client.{{MODULE_NAME}}.findMany({
+    })
+  }
+
+  public get(id: number): Promise<{{MODULE_NAME}} | null> {
+    return this.client.{{MODULE_NAME}}.findFirst({
+      where: { id },
+    })
+  }
+
+  public save(data: {{MODEL_NAME}}SavePayload): Promise<{{MODULE_NAME}}> { // TODO: add fields in module interface
+    return this.client.{{MODULE_NAME}}.create({
+      data,
+    })
+  }
+
+  public update(id: number, data: {{MODEL_NAME}}UpdatePayload): Promise<{{MODULE_NAME}}> {
+    return this.client.{{MODULE_NAME}}.update({
+      where: { id },
+      data,
+    })
+  }
+
+  public delete(id: number): Promise<{{MODULE_NAME}}> {
+    return this.client.{{MODULE_NAME}}.delete({
+      where: { id },
+    })
+  }
+}
