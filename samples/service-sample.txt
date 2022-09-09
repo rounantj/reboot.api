@@ -1,0 +1,35 @@
+import { PrismaClient } from '@prisma/client'
+import {{MODEL_NAME}}Repository from './{{MODULE_NAME}}-repository'
+
+export default class {{MODEL_NAME}}Service {
+  private readonly {{MODULE_NAME}}Repository: {{MODEL_NAME}}Repository 
+
+  constructor(public prismaClient: PrismaClient) {
+    this.{{MODULE_NAME}}Repository = new {{MODEL_NAME}}Repository(prismaClient)
+  }
+
+  async fetchAll() {
+    const {{MODULE_NAME}}s = await this.{{MODULE_NAME}}Repository.all()
+    return { {{MODULE_NAME}}s }
+  }
+
+  async fetchById(id: number) {
+    const {{MODULE_NAME}} = await this.{{MODULE_NAME}}Repository.get(id)
+    return { {{MODULE_NAME}} }
+  }
+
+  async store(payload: Object) {
+    const {{MODULE_NAME}} = await this.{{MODULE_NAME}}Repository.save(payload)
+    return { {{MODULE_NAME}} }
+  }
+
+  async update(id: number, payload: Object) {
+    const {{MODULE_NAME}} = await this.{{MODULE_NAME}}Repository.update(id, payload)
+    return { {{MODULE_NAME}} }
+  }
+
+  async destroy(id: number) {
+    const {{MODULE_NAME}} = await this.{{MODULE_NAME}}Repository.delete(id)
+    return { {{MODULE_NAME}} }
+  }
+}

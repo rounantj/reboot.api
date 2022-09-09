@@ -1,0 +1,26 @@
+import { {{MODULE_NAME}} } from '@prisma/client'
+
+// Fetch
+export interface {{MODEL_NAME}}FetchPayload {
+
+}
+
+export interface {{MODEL_NAME}}FetchAllResponseDTO {
+  {{MODULE_NAME}}s:{{MODULE_NAME}}[]
+}
+
+export interface {{MODEL_NAME}}FetchOneResponseDTO {
+  {{MODULE_NAME}}: {{MODEL_NAME}}
+}
+
+// Save
+export interface {{MODEL_NAME}}SavePayload {
+
+}
+
+// Update
+export interface {{MODEL_NAME}}UpdatePayload {
+
+}
+
+// Destroy
